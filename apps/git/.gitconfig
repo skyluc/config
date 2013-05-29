@@ -1,0 +1,31 @@
+[user]
+	email = luc.bourlier@typesafe.com
+	name = Luc Bourlier
+[core]
+	excludesfile = /home/luc/.git/ignore_global
+[giggle]
+	main-window-maximized = false
+	main-window-geometry = 2119x1359+300+51
+	history-view-vpane-position = 400
+	main-window-view = HistoryView
+	file-view-vpane-position = 627
+[color]
+	diff = always
+[alias]
+        st = status
+        ci = commit
+        co = checkout
+        cp = cherry-pick -x
+        cl = clone -o upstream
+        ff = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git merge --ff-only $REMOTE_TRACKING_BRANCH
+        nb = checkout -b
+	failing-210 = !GIT_HASH=`git log -1 --format=%H local/linux-2.10` && git cherry-pick $GIT_HASH && git reset HEAD~1
+	failing-2101 = !GIT_HASH=`git log -1 --format=%H local/linux-2.10.1` && git cherry-pick $GIT_HASH && git reset HEAD~1 && git update-index --assume-unchanged org.scala-ide.sbt.full.library/.classpath
+
+        ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+        ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+        lf = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]%n%b" --decorate --numstat
+
+        amend = commit --amend
+
+        reset-remote = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git reset $REMOTE_TRACKING_BRANCH

@@ -1,0 +1,40 @@
+Host moxie
+
+HostName moxie.typesafe.com
+User bourlier
+
+Host nd
+
+HostName nd.skyluc.org
+User luc
+
+Host dreamhost
+
+HostName scala-ide.dreamhosters.com
+User scalaide
+
+Host vb0
+
+HostName 0.0.0.0
+Port 6022
+User luc
+
+Host vb1
+
+HostName 0.0.0.0
+Port 6122
+
+Host vb2
+
+HostName 0.0.0.0
+Port 6222
+
+Host vb3
+
+HostName 0.0.0.0
+Port 6322
+
+Host vb4
+
+HostName 0.0.0.0
+Port 6422
