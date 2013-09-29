@@ -1,4 +1,5 @@
 set background=dark
+set nocompatible
 set hlsearch
 
 set smartindent
