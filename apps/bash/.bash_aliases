@@ -6,3 +6,5 @@ if [ "normandy" = ${HOSTNAME} ]
 then
   export PS1='\u@\h:\w> '
 fi
+
+alias test-eclipse='./eclipse/eclipse -data workspace -vmargs -Xmx1048m'
