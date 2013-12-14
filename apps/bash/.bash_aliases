@@ -7,4 +7,7 @@ then
   export PS1='\u@\h:\w> '
 fi
 
+alias la='ls -a'
+alias ll='ls -l'
+alias lla='ls -al'
 alias test-eclipse='./eclipse/eclipse -data workspace -vmargs -Xmx1048m'
