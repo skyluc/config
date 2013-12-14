@@ -1,0 +1,10 @@
+Partitions:
+
+sda1: efi boot partition, fat32, 64M
+sda2: swap, -> 8G
+sda3: / #1, 30G
+sda4: /home #1, 30G
+sda5: / #2, 30G
+sda6: /home #2 30G
+
+sdb1: /xdata, all

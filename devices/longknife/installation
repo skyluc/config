@@ -1,0 +1,136 @@
+# Partitions
+
+> parted /dev/sda
+
+>> mklabel gpt
+>> mkpart primary fat32 0% 512
+>> mkpart primary swap 512 8GB
+>> mkpart extended 8GB 100%
+>> mkpart logical ext4 8GB 38GB
+>> mkpart logical ext4 38GB 68GB
+>> mkpart logical ext4 68GB 98GB
+>> mkpart logical ext4 98GB 128GB
+
+> parted /dev/sdb
+
+>> mklabel gpt
+>> mkpart primary ext4 1 100%
+>> name 1 xdata
+
+# File systems
+
+(needed a reboot the first time)
+
+> mkdosfs -n efi /dev/sda1
+> mkswap -L swap /dev/sda2
+> mkfs.ext4 -L root1 /dev/sda5
+> mkfs.ext4 -L home1 /dev/sda6
+> mkfs.ext4 -L root2 /dev/sda7
+> mkfs.ext4 -L home2 /dev/sda8
+> mkfs.ext4 -L xdata /dev/sdb1
+
+# mounting
+
+> swapon /dev/sda2
+> mount /dev/sda5 /mnt/gentoo
+
+# Gentoo installation files
+
+> cd /mnt/gentoo
+> links http://www.gentoo.org/main/en/mirrors.xml
+
+>> Switzerland, SWITCHmirror (ftp)
+>> releases
+>> amd64
+>> autobuild
+>> current-stage3-amd64-nomultilib
+>> D -> stage3-amd64-nomultilib-xxx.tar.bz2
+
+> tar xjpf stage3-*.tar.bz2
+
+> mount /dev/sda1 /mnt/gentoo/boot
+
+> vi etc/portage/make.conf
+
+>> MAKEOPTS="-j5"
+
+# Gentoo base system
+
+> mirrorselect -i -o >> etc/portage/make.conf
+> mirrorselect -i -r -o >> etc/portage/make.conf
+
+> cp -L /etc/resolv.conf etc/
+
+> mount -t proc none proc
+> mount --rbind /sys sys
+> mount --rbind /dev dev
+
+# chroot
+
+> chroot /mnt/gentoo /bin/bash
+> source /etc/profile
+> export PS1="(chroot) $PS1"
+
+# portage
+
+> emerge-webrsync
+
+> eselect news list
+>> read new ones
+
+> eselect profile list
+>> using 13.0/no-multilib
+
+> nano /etc/portage/make.conf
+>> copy USES from setup
+
+> ls /usr/share/zoneinfo
+> cp /usr/share/zoneinfo/Europe/Zurich /etc/localtime
+> echo "Europe/Zurich" > /etc/timezome
+
+> emerge gentoo-sources
+> cd /usr/src/linux
+> make menuconfig
+
+> make && make modules_install
+> cp arch/x86_64/boot/bzImage /boot/kernel-3.4.9-gentoo
+
+> vi /etc/fstab
+>> copy a known one
+
+> nano -w /etc/conf.d/hostname
+>> hostname="longknife"
+
+> passwd
+
+> vi /etc/conf.d/keymap
+>> keymap="dvorak"
+
+> vi /etc/locale.gen
+>> en_US.UTF-8 UTF-8
+>> fr_FR.UTF-8 UTF-8
+> locale-gen
+
+> vi /etc/env.d/02locale
+>> LANG="us_US.UTF-8"
+>> LC_COLLATE="C"
+> env-update && source /etc/profile
+
+> emerge syslog-ng
+> rc-update add syslog-ng default
+> emerge logrotate
+
+> emerge vixie-cron
+> rc-update add vixie-cron default
+
+> emerge mlocate
+
+> emerge dhcpcd
+
+> emerge sys-boot/grub:2
+
+> grub2-install /dev/sda
+
+> grub2-mkconfig -o /boot/grub/grub.cfg
+
+
