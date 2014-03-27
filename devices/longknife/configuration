@@ -1,0 +1,23 @@
+# User
+
+> useradd -m -G users,wheel,audio,usb,video,portage -s /bin/bash luc
+> passwd luc
+
+# Sudo
+
+> emerge -a sudo
+Uncomment '%wheel' line in /etc/sudoers
+
+# Portage
+
+> emerge -a ufed
+
+# just because I need it
+
+> emerge -a vim
+
+# Rebuild with all flags
+
+> USE='-cairo' emerge -a --changed-use udev
+
+
