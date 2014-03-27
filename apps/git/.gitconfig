@@ -29,3 +29,4 @@
         amend = commit --amend
 
         reset-remote = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git reset $REMOTE_TRACKING_BRANCH
+        reset-hard-remote = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git reset --hard $REMOTE_TRACKING_BRANCH
