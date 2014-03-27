@@ -8,6 +8,16 @@ Host nd
 HostName nd.skyluc.org
 User luc
 
+Host xw
+
+HostName xw.skyluc.org
+User luc
+
+Host do
+
+HostName do.skyluc.org
+User luc
+
 Host dreamhost
 
 HostName scala-ide.dreamhosters.com
