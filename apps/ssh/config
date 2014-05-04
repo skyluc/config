@@ -8,14 +8,9 @@ Host nd
 HostName nd.skyluc.org
 User luc
 
-Host xw
+Host ig
 
-HostName xw.skyluc.org
-User luc
-
-Host do
-
-HostName do.skyluc.org
+HostName ig.skyluc.org
 User luc
 
 Host dreamhost
