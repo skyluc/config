@@ -19,6 +19,9 @@
         cl = clone -o upstream
         ff = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git merge --ff-only $REMOTE_TRACKING_BRANCH
         nb = checkout -b
+
+        hash = log -1 --format="%H"
+
 	failing-210 = !GIT_HASH=`git log -1 --format=%H local/linux-2.10` && git cherry-pick $GIT_HASH && git reset HEAD~1
 	failing-2101 = !GIT_HASH=`git log -1 --format=%H local/linux-2.10.1` && git cherry-pick $GIT_HASH && git reset HEAD~1 && git update-index --assume-unchanged org.scala-ide.sbt.full.library/.classpath
 
@@ -30,3 +33,5 @@
 
         reset-remote = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git reset $REMOTE_TRACKING_BRANCH
         reset-hard-remote = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git reset --hard $REMOTE_TRACKING_BRANCH
+[difftool]
+	prompt = false
