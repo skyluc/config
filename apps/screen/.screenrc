@@ -1,0 +1,10 @@
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B}%Y-%m-%d %{W}%c %{g}]'
+
+startup_message off
+
+# Default screens
+screen -t "-2"  2
+screen -t "sbt"  3
+screen -t "git"  4
+screen -t "-1"  1
