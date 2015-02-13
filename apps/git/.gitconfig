@@ -2,7 +2,7 @@
 	email = luc.bourlier@typesafe.com
 	name = Luc Bourlier
 [core]
-	excludesfile = /home/luc/.git/ignore_global
+	excludesfile = ~/.git/ignore_global
 [giggle]
 	main-window-maximized = false
 	main-window-geometry = 2119x1359+300+51
