@@ -1,0 +1,8 @@
+auto_close = 2
+terminal_font = -misc-fixed-*-*-*-*-20-*-*-*-*-*-*-*
+terminal_size = 119x35
+terminal_reserve_top = 5
+terminal_reserve_bottom = 0
+terminal_reserve_left = 0
+terminal_reserve_right = 80
+
