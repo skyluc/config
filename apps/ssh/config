@@ -3,6 +3,12 @@ Host moxie
 HostName moxie.typesafe.com
 User bourlier
 
+Host a0
+
+HostName moxie.typesafe.com
+Port 5000
+User bourlier
+
 Host nd
 
 HostName nd.skyluc.org
@@ -43,3 +49,11 @@ Host vb4
 
 HostName 0.0.0.0
 Port 6422
+
+Host 10.1.2.110
+
+User ubuntu
+
+Host 10.1.110.*
+
+User ubuntu
