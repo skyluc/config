@@ -35,5 +35,7 @@
         reset-hard-remote = !REMOTE_TRACKING_BRANCH=`git rev-parse --symbolic-full-name --abbrev-ref @{u}` && git reset --hard $REMOTE_TRACKING_BRANCH
 
         pr-add-fetch = config --add remote.upstream.fetch '+refs/pull/*/head:refs/remotes/upstream/pr/*'
+        perso-add = !REMOTE_URL=$(git remote show -n upstream | grep 'Fetch URL' | awk '{print $3}') && git remote add -f perso "git@github.com:skyluc/${REMOTE_URL##*/}"
+
 [difftool]
 	prompt = false
