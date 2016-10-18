@@ -9,46 +9,20 @@ HostName moxie.typesafe.com
 Port 5000
 User bourlier
 
-Host nd
+Host nt
 
-HostName nd.skyluc.org
+HostName nt.skyluc.org
 User luc
 
-Host ig
+Host ky
 
-HostName ig.skyluc.org
+HostName 10.10.1.2
 User luc
 
-Host dreamhost
+Host ty
 
-HostName scala-ide.dreamhosters.com
-User scalaide
-
-Host vb0
-
-HostName 0.0.0.0
-Port 6022
+HostName 10.10.1.3
 User luc
-
-Host vb1
-
-HostName 0.0.0.0
-Port 6122
-
-Host vb2
-
-HostName 0.0.0.0
-Port 6222
-
-Host vb3
-
-HostName 0.0.0.0
-Port 6322
-
-Host vb4
-
-HostName 0.0.0.0
-Port 6422
 
 Host 10.1.2.110
 
