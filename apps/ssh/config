@@ -16,12 +16,12 @@ User luc
 
 Host ky
 
-HostName 10.10.1.2
+HostName 10.110.1.2
 User luc
 
 Host ty
 
-HostName 10.10.1.3
+HostName 10.110.1.3
 User luc
 
 Host 10.1.2.110
