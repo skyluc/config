@@ -4,9 +4,16 @@ set -x
 
 CONTAINER_NAME=$1
 
+if [ -n "$2" ]
+then
+  RELEASE=$2
+else
+  RELEASE="yakkety"
+fi
+
 PUBLIC_KEY=$(cat /home/luc/.ssh/id_rsa.pub)
 
-lxc-create -t download -n $CONTAINER_NAME -- -d ubuntu -r yakkety -a amd64
+lxc-create -t download -n $CONTAINER_NAME -- -d ubuntu -r $RELEASE -a amd64
 
 lxc-start -n $CONTAINER_NAME
 
@@ -64,5 +71,7 @@ $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/vim/.vim $REMOTE_HOME/.vim
 # install java
 $SSH_CMD sudo apt-get install -y openjdk-8-jdk
 
+# install misc
+$SSH_CMD sudo apt-get install -y bash-completion
 
 echo "All done. Use '$SSH_CMD' to connect"
