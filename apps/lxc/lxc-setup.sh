@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-set -x
+#set -x
 
 CONTAINER_NAME=$1
 
@@ -21,6 +21,7 @@ lxc-start -n $CONTAINER_NAME
 echo Short pause, to allow the network to be up
 sleep 4
 
+lxc-attach -n $CONTAINER_NAME -- apt-get update
 lxc-attach -n $CONTAINER_NAME -- apt install -y openssh-server
 lxc-attach -n $CONTAINER_NAME -- mkdir /home/ubuntu/.ssh
 lxc-attach -n $CONTAINER_NAME -- bash -c "echo '$PUBLIC_KEY' >> /home/ubuntu/.ssh/authorized_keys"
