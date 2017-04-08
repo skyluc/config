@@ -31,3 +31,8 @@ User ubuntu
 Host 10.1.110.*
 
 User ubuntu
+
+Host 52.166.* 52.178.* 52.28.* 52.27.* 35.157.* 35.156.*
+
+User ubuntu
+IdentityFile ~/.ssh/aws/aws_rsa
