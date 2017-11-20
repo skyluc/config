@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-#set -x
+set -x
 
 CONTAINER_NAME=$1
 
@@ -32,9 +32,9 @@ lxc-attach -n $CONTAINER_NAME -- sed -i 's/%sudo\(.*\)ALL=(ALL:ALL) ALL/%sudo\1A
 
 CONTAINER_IP=$(lxc-ls -f | grep $CONTAINER_NAME | awk '{print $5}')
 
-if grep -q $CONTAINER_NAME /etc/hosts
+if grep -q '${CONTAINER_NAME}\$' /etc/hosts
 then
-  sudo sed -i "s/.* $CONTAINER_NAME/$CONTAINER_IP $CONTAINER_NAME/" /etc/hosts
+  sudo sed -i "s/.* $CONTAINER_NAME\$/$CONTAINER_IP $CONTAINER_NAME/" /etc/hosts
 else
   echo "$CONTAINER_IP $CONTAINER_NAME" | sudo tee -a /etc/hosts
 fi
