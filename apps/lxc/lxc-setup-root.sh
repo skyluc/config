@@ -8,12 +8,22 @@ if [ -n "$2" ]
 then
   RELEASE=$2
 else
-  RELEASE="yakkety"
+  RELEASE="artful"
 fi
 
 PUBLIC_KEY=$(cat /home/luc/.ssh/id_rsa.pub)
 
 sudo lxc-create -t download -n $CONTAINER_NAME -- -d ubuntu -r $RELEASE -a amd64
+
+cat <<EOF |
+
+lxc.cgroup.devices.allow = a
+lxc.mount.auto = cgroup:rw cgroup-full:rw proc:rw
+lxc.apparmor.profile = unconfined
+lxc.cap.drop =
+EOF
+sudo tee -a "/var/lib/lxc/$CONTAINER_NAME/config"
+
 
 sudo lxc-start -n $CONTAINER_NAME
 
@@ -40,9 +50,9 @@ else
 fi
 
 # clean know_hosts if needed
-ssh-keygen -f "/home/luc/.ssh/known_hosts" -R $CONTAINER_NAME
+sudo ssh-keygen -f "/root/.ssh/known_hosts" -R $CONTAINER_NAME
 # add the new one
-ssh-keyscan -t rsa $CONTAINER_NAME >> /home/luc/.ssh/known_hosts
+ssh-keyscan -t rsa $CONTAINER_NAME | sudo tee -a /root/.ssh/known_hosts
 
 USERNAME_HOST="ubuntu@$CONTAINER_NAME"
 SSH_CMD="ssh $USERNAME_HOST"

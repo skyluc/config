@@ -8,7 +8,7 @@ if [ -n "$2" ]
 then
   RELEASE=$2
 else
-  RELEASE="yakkety"
+  RELEASE="artful"
 fi
 
 PUBLIC_KEY=$(cat /home/luc/.ssh/id_rsa.pub)
