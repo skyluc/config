@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-DEBUG=false
-#set -x
-
 exec 3>&1
 exec 4>&2
 
@@ -54,7 +51,7 @@ RUNNING=false
 for i in $(seq 1 10)
 do
   sleep 1
-  if (lxc exec test -- ls /home/ubuntu/.ssh/authorized_keys &> /dev/null)
+  if (lxc exec $CONTAINER_NAME -- ls /home/ubuntu/.ssh/authorized_keys &> /dev/null)
   then
     RUNNING=true
     break
@@ -71,7 +68,7 @@ CONTAINER_IP=${DIRTY_CONTAINER_IP%% *}
 
 status "Uploading public key."
 
-lxc exec test -- bash -c "echo \"$PUBLIC_KEY\" >> $REMOTE_HOME/.ssh/authorized_keys"
+lxc exec $CONTAINER_NAME -- bash -c "echo \"$PUBLIC_KEY\" >> $REMOTE_HOME/.ssh/authorized_keys"
 
 status "Updating /etc/hosts."
 
