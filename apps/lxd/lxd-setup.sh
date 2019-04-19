@@ -63,7 +63,7 @@ then
   error "Unable to find the expect file in the container. Something is wrong."
 fi
 
-DIRTY_CONTAINER_IP=$(lxc list -c n4s --format csv | awk -F ',' '{print $2}')
+DIRTY_CONTAINER_IP=$(lxc list -c n4s --format csv | grep "$CONTAINER_NAME" | awk -F ',' '{print $2}')
 CONTAINER_IP=${DIRTY_CONTAINER_IP%% *}
 
 status "Uploading public key."
@@ -73,7 +73,7 @@ lxc exec $CONTAINER_NAME -- bash -c "echo \"$PUBLIC_KEY\" >> $REMOTE_HOME/.ssh/a
 status "Updating /etc/hosts."
 
 # set or update the IP
-if grep -q '${CONTAINER_NAME}\$' /etc/hosts
+if grep -q "${CONTAINER_NAME}\$" /etc/hosts
 then
   sudo sed -i "s/.* $CONTAINER_NAME\$/$CONTAINER_IP $CONTAINER_NAME/" /etc/hosts
 else
