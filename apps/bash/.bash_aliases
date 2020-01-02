@@ -1,6 +1,5 @@
 # Add ~/bin and a few ~/opt/__/bin folder to PATH
-export PATH=~/bin:~/opt/java/bin:~/opt/sbt/bin:~/opt/play:~/opt/maven/bin:~/opt/node/bin:$PATH
-export JAVA_HOME=~/opt/java
+export PATH=~/bin:~/opt/java/bin:~/opt/sbt/bin:~/opt/play:~/opt/maven/bin:~/opt/node/bin:$PATH:/usr/local/go/bin
 
 # Use vim as the default command line editor
 export EDITOR=$(which vim)
