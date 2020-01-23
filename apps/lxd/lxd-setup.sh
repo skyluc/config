@@ -31,7 +31,7 @@ if [ -n "$2" ]
 then
   RELEASE=$2
 else
-  RELEASE="18.10"
+  RELEASE="19.10"
 fi
 
 PUBLIC_KEY=$(cat /home/luc/.ssh/id_rsa.pub)
@@ -43,7 +43,7 @@ sudo true >&3 2>&4
 
 status "Creating $CONTAINER_NAME with Ubuntu $RELEASE."
 
-lxc launch ubuntu:$RELEASE $CONTAINER_NAME -c security.nesting=true
+lxc launch ubuntu:$RELEASE $CONTAINER_NAME -c security.nesting=true -c security.privileged=true
 
 status "Waiting for container to be in the right state."
 
@@ -93,6 +93,7 @@ status "Copying ssh keys."
 
 USERNAME_HOST="ubuntu@$CONTAINER_NAME"
 SSH_CMD="ssh $USERNAME_HOST"
+SSH_CMD_INT="ssh -t $USERNAME_HOST"
 
 # transfer the keys
 scp ~/.ssh/lxd/id_rsa* $USERNAME_HOST:.ssh/
@@ -107,7 +108,7 @@ $SSH_CMD sudo apt upgrade -y
 status "Setting user account using skyluc/config."
 
 $SSH_CMD mkdir -p $REMOTE_HOME/dev/skyluc
-$SSH_CMD git clone -o upstream git@github.com:skyluc/config $REMOTE_HOME/dev/skyluc/config
+$SSH_CMD_INT git clone -o upstream git@github.com:skyluc/config $REMOTE_HOME/dev/skyluc/config
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/bash/.bash_aliases $REMOTE_HOME/.bash_aliases
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/git/.gitconfig $REMOTE_HOME/.gitconfig
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/git/.git_folder $REMOTE_HOME/.git
