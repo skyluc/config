@@ -15,3 +15,8 @@ alias ll='ls -l'
 alias lla='ls -al'
 # shortcut to launch throwaway eclipse
 alias test-eclipse='./eclipse/eclipse -data workspace -vmargs -Xmx1048m'
+
+eval $(keychain --eval id_rsa)
+
+# need for notify-send to work
+/usr/lib/notification-daemon/notification-daemon &

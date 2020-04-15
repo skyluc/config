@@ -1,5 +1,5 @@
 [user]
-	email = luc.bourlier@typesafe.com
+	email = lb@skyluc.org
 	name = Luc Bourlier
 [core]
 	excludesfile = ~/.git/ignore_global
