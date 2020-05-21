@@ -28,8 +28,9 @@ Host 10.1.2.110
 
 User ubuntu
 
-Host skyluc cloudflow
+Host skyluc cloudflow coursera perso
 
+ForwardX11 yes
 User ubuntu
 
 Host 52.166.* 52.178.* 52.28.* 52.27.* 35.157.* 35.156.* 52.59.* 52.29.* 52.57.* 13.80.* 35.158.* 52.58.*
