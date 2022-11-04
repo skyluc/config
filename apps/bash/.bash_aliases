@@ -19,4 +19,5 @@ alias test-eclipse='./eclipse/eclipse -data workspace -vmargs -Xmx1048m'
 eval $(keychain --eval id_rsa)
 
 # need for notify-send to work
-/usr/lib/notification-daemon/notification-daemon &
+#/usr/lib/notification-daemon/notification-daemon &
+

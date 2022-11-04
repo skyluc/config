@@ -31,7 +31,7 @@ if [ -n "$2" ]
 then
   RELEASE=$2
 else
-  RELEASE="19.10"
+  RELEASE="21.10"
 fi
 
 PUBLIC_KEY=$(cat /home/luc/.ssh/id_rsa.pub)
@@ -115,9 +115,9 @@ $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/git/.git_folder $REMOTE_HOME/
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/vim/.vimrc $REMOTE_HOME/.vimrc
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/vim/.vim $REMOTE_HOME/.vim
 
-status "Installing openjdk-8."
+# status "Installing openjdk-11."
 
-$SSH_CMD sudo apt install -y openjdk-8-jdk
+# $SSH_CMD sudo apt install -y openjdk-11-jdk
 
 status "Installing docker.io."
 
