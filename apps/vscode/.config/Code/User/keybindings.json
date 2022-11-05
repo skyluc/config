@@ -19,5 +19,9 @@
     "key": "shift+end",
     "command": "extension.extendedCursorMove.cursorEndSelect",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "workbench.action.files.saveFiles"
   }
 ]
