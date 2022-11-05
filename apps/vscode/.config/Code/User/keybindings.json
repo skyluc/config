@@ -1,0 +1,23 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "home",
+    "command": "extension.extendedCursorMove.cursorHome",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+home",
+    "command": "extension.extendedCursorMove.cursorHomeSelect",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "end",
+    "command": "extension.extendedCursorMove.cursorEnd",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+end",
+    "command": "extension.extendedCursorMove.cursorEndSelect",
+    "when": "editorTextFocus"
+  }
+]
