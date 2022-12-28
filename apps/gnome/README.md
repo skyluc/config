@@ -28,3 +28,9 @@
 
 `battery-percentage.conf`
 
+# Colors
+
+* Enable **Shell user themes**, at https://extensions.gnome.org/extension/19/user-themes/
+
+* `colors.conf`
+
