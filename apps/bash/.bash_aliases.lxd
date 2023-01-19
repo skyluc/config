@@ -1,2 +1,5 @@
 eval $(keychain --eval id_ed25519)
 
+export EDITOR="/usr/bin/vim"
+export PS1='\[\e]0;\h: \w\a\]\[\033[01;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
