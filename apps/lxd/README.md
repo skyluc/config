@@ -22,6 +22,12 @@
 lxc profile device add default eth0 nic nictype=bridged parent=lxcbr0
 ```
 
+Additional setting for the bridge, to be compatible with the DA VPN
+
+```
+lxc network set bridge bridge.mtu=1400
+```
+
 # support for docker in container
 
 * create a btrfs storage pool for docker
