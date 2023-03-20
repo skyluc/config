@@ -1,23 +1,28 @@
-# Add ~/bin and a few ~/opt/__/bin folder to PATH
-export PATH=~/bin:~/opt/java/bin:~/opt/sbt/bin:~/opt/play:~/opt/maven/bin:~/opt/node/bin:$PATH:/usr/local/go/bin
+# Add ~/opt/bin folder to PATH
+export PATH=~/opt/bin:$PATH
 
 # Use vim as the default command line editor
 export EDITOR=$(which vim)
-
-if [ "normandy" = ${HOSTNAME} ]
-then
-  export PS1='\u@\h:\w> '
-fi
 
 alias l='ls'
 alias la='ls -a'
 alias ll='ls -l'
 alias lla='ls -al'
-# shortcut to launch throwaway eclipse
-alias test-eclipse='./eclipse/eclipse -data workspace -vmargs -Xmx1048m'
 
-eval $(keychain --eval id_rsa)
+eval $(keychain --eval id_ed25519)
 
-# need for notify-send to work
-#/usr/lib/notification-daemon/notification-daemon &
+if [ -f "$HOME/.bash_aliases.platform" ]
+then
+  source "$HOME/.bash_aliases.platform"
+fi
+
+if [ -f "$HOME/.bash_aliases.context" ]
+then
+  source "$HOME/.bash_aliases.context"
+fi
+
+if [ -f "$HOME/.bash_aliases.local" ]
+then
+  source "$HOME/.bash_aliases.local"
+fi
 
