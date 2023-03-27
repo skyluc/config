@@ -117,7 +117,8 @@ status "Setting user account using skyluc/config."
 
 $SSH_CMD mkdir -p $REMOTE_HOME/dev/skyluc
 $SSH_CMD_INT git clone -o upstream git@github.com:skyluc/config $REMOTE_HOME/dev/skyluc/config 1>&3 2>&4
-$SSH_CMD_INT ln -s $REMOTE_HOME/dev/skyluc/config/apps/bash/.bash_aliases.lxd $REMOTE_HOME/.bash_aliases
+$SSH_CMD_INT ln -s $REMOTE_HOME/dev/skyluc/config/apps/bash/.bash_aliases $REMOTE_HOME/.bash_aliases
+$SSH_CMD_INT ln -s $REMOTE_HOME/dev/skyluc/config/apps/bash/.bash_aliases.platform.lxd $REMOTE_HOME/.bash_aliases.platform
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/git/.gitconfig $REMOTE_HOME/.gitconfig
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/git/.git_folder $REMOTE_HOME/.git
 $SSH_CMD ln -s $REMOTE_HOME/dev/skyluc/config/apps/vim/.vimrc $REMOTE_HOME/.vimrc
