@@ -1,2 +1,4 @@
 export EMAIL="luc.bourlier@digitalasset.com"
+export GIT_AUTHOR_EMAIL="$EMAIL"
+export GIT_COMMITTER_EMAIL="$EMAIL"
 
