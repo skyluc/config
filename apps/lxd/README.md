@@ -1,3 +1,46 @@
+# Setup (from 2024)
+
+To use priviledge mode, the su account has to be used to create the instances
+
+* Check the github keys for the lxd instances.
+
+  The keys are expected to be at `~/.ssh/lxd/id_ed25519` and `~/.ssh/lxd/id_ed25519.pub`.
+
+  The public key needs to be added at [https://github.com/settings/keys].
+
+* Install `lxd` from snap
+
+  ```
+  sudo snap install --classic lxd
+  ```
+
+* Create and set th btrfs storage pool
+  
+  ```
+  sudo lxc storage create default btrfs source=/data/lxc-storage
+  sudo lxc profile device add default root disk path=/ pool=default
+  ```
+
+* Initialize lxd
+
+  ```
+  sudo lxd init
+  ```
+
+  All defaults, expect creating storage pool, as it was already done in the previous step.
+
+* Create the instance
+
+  ```
+  lxd-setup.sh test01
+  ```
+
+* Connect to the instance
+
+  ```
+  ssh ubuntu@test01
+  ```
+
 # packages
 
 `lxc` (apt), `lxd` (snap)

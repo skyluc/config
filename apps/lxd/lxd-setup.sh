@@ -41,8 +41,9 @@ sudo true >&3 2>&4
 
 status "Creating $CONTAINER_NAME with Ubuntu $RELEASE."
 
-lxc \
+sudo lxc \
   launch \
+  -p default \
   ubuntu:$RELEASE $CONTAINER_NAME \
   -c security.nesting=true \
   -c security.privileged=true \
@@ -55,7 +56,7 @@ RUNNING=false
 for i in $(seq 1 10)
 do
   sleep 1
-  if (lxc exec $CONTAINER_NAME -- ls /home/ubuntu/.ssh/authorized_keys &> /dev/null)
+  if (sudo lxc exec $CONTAINER_NAME -- ls /home/ubuntu/.ssh/authorized_keys &> /dev/null)
   then
     RUNNING=true
     break
@@ -67,12 +68,12 @@ then
   error "Unable to find the expect file in the container. Something is wrong."
 fi
 
-DIRTY_CONTAINER_IP=$(lxc list -c n4s --format csv | grep "$CONTAINER_NAME" | awk -F ',' '{print $2}')
+DIRTY_CONTAINER_IP=$(sudo lxc list -c n4s --format csv | grep "$CONTAINER_NAME" | awk -F ',' '{print $2}')
 CONTAINER_IP=${DIRTY_CONTAINER_IP%% *}
 
 status "Uploading public key."
 
-lxc exec $CONTAINER_NAME -- bash -c "echo \"$PUBLIC_KEY\" >> $REMOTE_HOME/.ssh/authorized_keys"
+sudo lxc exec $CONTAINER_NAME -- bash -c "echo \"$PUBLIC_KEY\" >> $REMOTE_HOME/.ssh/authorized_keys"
 
 status "Updating /etc/hosts."
 
