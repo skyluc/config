@@ -1,39 +1,5 @@
-Host moxie
-
-HostName moxie.typesafe.com
-User bourlier
-
-Host a0
-
-HostName moxie.typesafe.com
-Port 5000
-User bourlier
-
-Host nt
-
-HostName nt.skyluc.org
-User luc
-
-Host ky
-
-HostName 10.110.1.2
-User luc
-
-Host ty
-
-HostName 10.110.1.3
-User luc
-
-Host 10.1.2.110
-
-User ubuntu
-
-Host skyluc cloudflow coursera perso
+Host lxd test01
 
 ForwardX11 yes
 User ubuntu
 
-Host 52.166.* 52.178.* 52.28.* 52.27.* 35.157.* 35.156.* 52.59.* 52.29.* 52.57.* 13.80.* 35.158.* 52.58.*
-
-User ubuntu
-IdentityFile ~/.ssh/aws/aws_rsa
