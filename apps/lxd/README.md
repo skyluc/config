@@ -14,10 +14,17 @@ To use priviledge mode, the su account has to be used to create the instances
   sudo snap install --classic lxd
   ```
 
-* Create and set th btrfs storage pool
+* Create and set the btrfs storage pool
   
   ```
   sudo lxc storage create default btrfs source=/data/lxc-storage
+  sudo lxc profile device add default root disk path=/ pool=default
+  ```
+
+* Create and set the btrfs storage pool
+  
+  ```
+  sudo lxc storage create default zfs zfs.pool_name=lxc-pool
   sudo lxc profile device add default root disk path=/ pool=default
   ```
 
