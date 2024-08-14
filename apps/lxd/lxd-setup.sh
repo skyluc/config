@@ -9,7 +9,7 @@ exec 4>&2
 PUBLIC_KEY=$(cat /home/luc/.ssh/id_ed25519.pub)
 REMOTE_HOME="/home/ubuntu"
 
-RELEASE="22.04"
+RELEASE="24.04"
 
 if ${DEBUG:-false}
 then
