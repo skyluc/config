@@ -112,7 +112,8 @@ $SSH_CMD sudo apt upgrade -y
 
 status "Installing additional required packages."
 
-$SSH_CMD sudo apt -y install ca-certificates curl gnupg lsb-release keychain
+# fonts are missing by default from 24.04 ?
+$SSH_CMD sudo apt -y install ca-certificates curl gnupg lsb-release keychain fonts-droid-fallback fonts-dejavu-core fonts-dejavu-mono
 
 status "Setting user account using skyluc/config."
 
