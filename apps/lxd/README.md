@@ -6,6 +6,11 @@ To use priviledge mode, the su account has to be used to create the instances
 
   The keys are expected to be at `~/.ssh/lxd/id_ed25519` and `~/.ssh/lxd/id_ed25519.pub`.
 
+  ```
+  mkdir -p .ssh/lxd
+  ssh-keygen -t ed25519 -C "lb@skyluc.org" -f ~/.ssh/lxd/id_ed25519
+  ```
+
   The public key needs to be added at [https://github.com/settings/keys].
 
 * Install `lxd` from snap
